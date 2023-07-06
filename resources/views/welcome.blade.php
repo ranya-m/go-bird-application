@@ -1,6 +1,5 @@
 <x-app-layout>
     <x-slot name="header">
-        
         @include('offers.offers-search') 
     </x-slot>
 
