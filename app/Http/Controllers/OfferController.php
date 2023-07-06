@@ -13,15 +13,14 @@ class OfferController extends Controller
 {
     public function index()
     {
-        $offers = Offer::query();
+        // $offers = Offer::query();
+        $offers =  Offer::query()->paginate(15);
 
         if (Auth::check() && Auth::user()->host) {
             $hostId = Auth::user()->host->id;
             $offers->whereNotIn('host_id', [$hostId]);
         }
-    
-        $offers = $offers->paginate(15);
-            
+                
         return view('welcome', [
             'offers' => $offers
         ]);

@@ -34,6 +34,6 @@
 
 
 <!-- Pagination links -->
-<div class="flex justify-center my-4">
+{{-- <div class="flex justify-center my-4">
     {{ $offers->links() }}
-</div>
+</div> --}}

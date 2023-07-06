@@ -52,8 +52,7 @@
             </div> 
 
             <button class="relative border border-l-neutral-200 border-y-transparent border-r-transparent sm:border-transparent rounded-r-2xl rounded-y-2xl" type="submit">
-                Search
-                {{-- <x-codicon-search class="text-cyan-500 w-5 hover:text-cyan-400  mx-2 sm:mr-2  sm:ml-0 " /> --}}
+                {{-- <x-iconpark-search-o class="text-cyan-500 w-5 hover:text-cyan-400  mx-2 sm:mr-2  sm:ml-0 " /> --}}
             </button> 
         </div>
         @if (request()->filled('country') || request()->filled('city') || request()->filled('start_date') || request()->filled('end_date') || request()->filled('sort_option') || request()->filled('category'))
@@ -64,12 +63,12 @@
         </div>    
         
                 {{-- CATEGORIES OPTIONS --}}
-                {{-- <div class="grid grid-cols-5 sm:grid-cols-10 sm:space-y-0 justify-items-center my-2 text-xs 2xl:text-sm shadow-sm rounded-2xl lg:space-x-0 md:space-x-8 sm:space-x-10">
-                    <div class="ml-2 mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2 grid grid-cols-1 justify-center">
+                <div class="grid grid-cols-5 sm:grid-cols-10 sm:space-y-0 justify-items-center my-2 text-xs 2xl:text-sm shadow-sm rounded-2xl lg:space-x-0 md:space-x-8 sm:space-x-10">
+                    <div class="ml-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2 grid grid-cols-1 justify-center">
                         <input type="hidden" id="category_all" name="category" value="all">
                         <div class="grid grid-cols-1 justify-center">
                             <label for="category_all" class="text-neutral-500 mx-auto cursor-pointer inline-block text-center">
-                                <x-phosphor-house-line class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer" />
+                                <img src="/category/all.png" alt="Logo" class="w-7">
                                 All 
                             </label>
                         </div>
@@ -78,7 +77,7 @@
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="luxe" name="category" value="luxe">
                         <label for="luxe" class="text-neutral-500 mx-auto cursor-pointer inline-block text-center">
-                        <x-phosphor-star-four  class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer " />
+                            <img src="/category/luxe.png" alt="Logo" class="w-7">
                         Luxe
                         </label>
                     </div>
@@ -86,15 +85,15 @@
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="city" name="category" value="city"/>
                             <label for="city" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <x-iconpark-cityone-o class="text-neutral-500 h-8 w-10 mx-auto  font-bold cursor-pointer " />
-                            City
+                                <img src="/category/city.png" alt="Logo" class="w-7">
+                                City
                         </label>
                     </div>
 
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="beach" name="category" value="beach">
                         <label for="beach" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <x-iconpark-beachumbrella-o class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer " />
+                            <img src="/category/beach.png" alt="Logo" class="w-7">
                             Beach
                         </label>
                     </div>
@@ -102,23 +101,23 @@
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                             <input type="hidden" id="rural" name="category" value="rural">
                             <label for="rural" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <x-iconpark-naturalmode-o class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer " />
-                            Rural
+                                <img src="/category/rural.png" alt="Logo" class="w-7">
+                                Rural
                             </label>
                     </div>
 
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                             <input type="hidden" id="rural" name="category" value="rural">
                             <label for="rural" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <x-phosphor-mountains class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer " />
-                            Mountain
+                                <img src="/category/mountain.png" alt="Logo" class="w-7">
+                                Mountain
                             </label>
                     </div>
 
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="island" name="category" value="island">
                         <label for="island" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <x-iconpark-coconuttree-o  class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer " />
+                            <img src="/category/island.png" alt="Logo" class="w-7">
                             Island
                         </label>
                     </div>
@@ -126,7 +125,7 @@
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="desert" name="category" value="desert">
                         <label for="desert" class="text-neutral-500 cursor-pointer  inline-block text-center">
-                            <x-phosphor-cactus class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer" />
+                            <img src="/category/desert.png" alt="Logo" class="w-7">
                             Desert
                         </label>
                     </div>
@@ -134,7 +133,8 @@
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="traditional" name="category" value="traditional">
                         <label for="traditional" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <x-iconpark-citygate-o class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer" />
+                            <img src="/category/traditional.png" alt="Logo" class="w-7">
+
                             Traditional
                         </label>
                     </div>
@@ -142,10 +142,10 @@
                     <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2 mr-2">
                         <input type="hidden" id="boat" name="category" value="boat">
                         <label for="boat" class="text-neutral-500  cursor-pointer inline-block text-center">
-                            <x-phosphor-boat class="text-neutral-500 h-8 w-10 mx-auto  cursor-pointer" />
+                            <img src="/category/boat.png" alt="Logo" class="w-7">
                             Boat
                         </label>
                     </div>
 
-                </div>  --}}
+                </div> 
             

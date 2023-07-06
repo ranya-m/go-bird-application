@@ -1,5 +1,5 @@
-<div class='flex'>
-    <x-phosphor-bird-bold class='h-8 w-8 text-cyan-500' />
-    <p class='text-cyan-500 font-semibold mx-1 my-2'>GoBird</p>
+<div class='flex items-center'>
+    <img src="/logo.png" alt="Logo" class="w-9">
+    <p class='text-cyan-500 font-semibold  mt-2.5'>GoBird</p>
 </div>
 
