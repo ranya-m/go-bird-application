@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         $hostIds = Host::pluck('id')->all();
 
             // Create offers
-        Offer::factory()->count(20)->create([
+        Offer::factory()->count(30)->create([
             'host_id' => function () use ($hostIds) {
                 // Randomly select a host ID from the availables ones
                 return DB::table('hosts')->inRandomOrder()->value('id');

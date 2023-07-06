@@ -7,8 +7,8 @@
         <a>
             <div class="mt-5">
                 <a href="{{ route('offers.detail', ['offerId' => $offer->id]) }}">
-                    {{-- <img src="{{ $offer->photos[0] }}" alt="Offer Photos" class="rounded-lg bg-cover object-cover w-full h-48 2xl:h-60"> --}}
-                    <img src={{ asset('storage/photos/photo.jpeg') }} alt="Offer Photos" class="rounded-lg bg-cover object-cover w-full h-48 2xl:h-60">
+                    <img src="{{ $offer->photos[0] }}" alt="Offer Photos" class="rounded-lg bg-cover object-cover w-full h-48 2xl:h-60">
+                    {{-- <img src={{ asset('storage/photos/photo.jpeg') }} alt="Offer Photos" class="rounded-lg bg-cover object-cover w-full h-48 2xl:h-60"> --}}
                     <div class="flex flex-row justify-between items-start mt-4">
                         <div class="text-sm 2xl:text-base">
                             <p class=" text-gray-800 font-bold">{{ $offer->city }}, {{ $offer->country }}</p>

@@ -29,7 +29,7 @@ class OfferFactory extends Factory
             'region' => $this->faker->randomElement(['Africa', 'Middle East', 'Europe', 'Americas', 'Asia Pacific']),
             'category' => $this->faker->randomElement(['luxe', 'city', 'beach', 'rural', 'mountain', 'island', 'desert', 'traditional',  'boat']),
             'type' => $this->faker->randomElement(['House', 'Apartment', 'Hotel', 'Guesthouse']),
-            // 'photos' => $this->generateImgUrls($this->faker->numberBetween(5, 15)),
+            'photos' => $this->generateImgUrls($this->faker->numberBetween(5, 15)),
             // 'photos' => $this->faker->image('public/photos/photo'),
             'videos' => $this->generateVideoUrls($this->faker->numberBetween(0, 2)),
             'rating' => $this->faker->randomFloat(2, 0, 5),
