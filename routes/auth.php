@@ -3,12 +3,19 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Auth\IdentityVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
+use App\Http\Controllers\Auth\IdentityVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RegisteredHostController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\VerifyIdentityController;
+use App\Http\Controllers\Auth\VerifyPhoneController;
+
+
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -47,6 +54,29 @@ Route::middleware('auth')->group(function () {
                 ->middleware('throttle:6,1')
                 ->name('verification.send');
 
+        // Route for verifying identity
+        // Route::post('/verify-identity', [VerifyIdentityController::class, '__invoke'])
+        //     ->name('verification.verify');
+
+        // Route for showing identity document
+        // Route::get('/identity-documents/{filename}', [VerifyIdentityController::class, 'showIdentityDocument'])
+        //     ->name('identity-document.show');
+
+        // Route for sending verification for identity
+        // Route::post('/verification/send', [VerifyIdentityController::class, 'sendVerification'])
+        //     ->name('verification.send-identity');
+
+        // Route for verifying identity
+        // Route::post('/identity/verify', [VerifyIdentityController::class, 'verifyIdentity'])
+        //     ->name('identity.verify');
+
+
+        // Phone verification :
+        // Route::post('/verify-phone', [VerifyPhoneController::class, 'verifyPhone'])->name('verify-phone');
+
+
+
+
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
                 ->name('password.confirm');
 
@@ -56,4 +86,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
+
+    // Creating a Host Account for the 1st time : 
+    Route::get('/become-host', [RegisteredHostController::class, 'render']);
+    
+    Route::post('/become-host', [RegisteredHostController::class, 'create'])
+        ->name('become.host');
+
+    
 });
