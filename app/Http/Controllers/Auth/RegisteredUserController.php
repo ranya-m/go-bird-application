@@ -23,6 +23,8 @@ class RegisteredUserController extends Controller
         return view('auth.register');
     }
 
+
+
     /**
      * Handle an incoming registration request.
      *
@@ -46,6 +48,26 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        if ($request->has('redirectToBecomeHost')) {
+            return redirect()->route('become.host');
+        }else{
+            return redirect(RouteServiceProvider::HOME);
+
+        }
+    
+
     }
+
+        // registration of a host account by a user : 
+        public function createHost(Request $request)
+        {
+            $controller = new RegisteredHostController();
+            return $controller->createHost($request);
+        }
+    
+        public function storeHost(Request $request) : RedirectResponse
+        {
+            $controller = new RegisteredHostController();
+            return $controller->storeHost($request);
+        }
 }

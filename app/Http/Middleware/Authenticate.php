@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Middleware;
 
@@ -9,9 +9,25 @@ class Authenticate extends Middleware
 {
     /**
      * Get the path the user should be redirected to when they are not authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return string|null
      */
-    protected function redirectTo(Request $request): ?string
+    protected function redirectTo($request)
     {
-        return $request->expectsJson() ? null : route('login');
+        if (! $request->expectsJson()) {
+            return route('login');
+        }
     }
 }
+
+
+
+    // protected function redirectTo(Request $request): ?string
+    // {
+    //     if (!$request->expectsJson() && $request->is('become-host') && $request->isMethod('GET') && auth()->guest()) {
+    //         return route('register');
+    //     }
+    
+    //     return $request->expectsJson() ? null : route('login');
+    // }
