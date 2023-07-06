@@ -13,8 +13,6 @@ return new class extends Migration
     {
         Schema::create('hosts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->boolean('agree_to_host_terms')->nullable();
             $table->boolean('account_approved' )->nullable();            
