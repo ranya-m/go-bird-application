@@ -52,7 +52,8 @@
             </div> 
 
             <button class="relative border border-l-neutral-200 border-y-transparent border-r-transparent sm:border-transparent rounded-r-2xl rounded-y-2xl" type="submit">
-                <x-codicon-search class="text-cyan-500 w-5 hover:text-cyan-400  mx-2 sm:mr-2  sm:ml-0 " />
+                Search
+                {{-- <x-codicon-search class="text-cyan-500 w-5 hover:text-cyan-400  mx-2 sm:mr-2  sm:ml-0 " /> --}}
             </button> 
         </div>
         @if (request()->filled('country') || request()->filled('city') || request()->filled('start_date') || request()->filled('end_date') || request()->filled('sort_option') || request()->filled('category'))
