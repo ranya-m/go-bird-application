@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-2 2xl:gap-4 ">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 2xl:gap-4 ">
 @if ($offers->isEmpty())
     <p class="text-sm 2xl:text-base">No offers in this category yet.</p>
 @else
@@ -34,6 +34,9 @@
 
 
 <!-- Pagination links -->
-{{-- <div class="flex justify-center my-4">
+@if ($offers->hasPages())
+<div class="flex justify-center my-4">
     {{ $offers->links() }}
-</div> --}}
+    {{-- {{ $offers->links('pagination.custom') }} --}}
+</div> 
+@endif

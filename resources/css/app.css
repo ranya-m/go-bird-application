@@ -21,39 +21,48 @@
     color: rgba(223, 223, 223, 0.643);
 }
 
+/* .pagination.custom .pagination-item {
+} */
 
-.pagination {
+/* .pagination.custom .pagination-previous {
+} */
+
+/* .pagination.custom .pagination-next {
+} */
+
+
+/* .pagination {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-}
+} */
 
-.pagination > .active > a {
+/* .pagination > .active > a {
   border-bottom: 2px solid rgba(0, 255, 255, 0.6);
 
-}
+} */
 
-.pagination > li > a {
+/* .pagination > li > a {
   color: #2c5282;
   background-color: #f7fafc;
   border: 1px solid #e2e8f0;
   padding: 6px 12px;
   text-decoration: none;
   transition: background-color 0.3s ease;
-}
+} */
 
-.pagination > li > a:hover {
+/* .pagination > li > a:hover {
   background-color: #a0aec0;
   color: #fff;
-}
+} */
 
-.pagination > .disabled > span {
+/* .pagination > .disabled > span {
   color: #e2e8f0;
   background-color: #f7fafc;
   border: 1px solid #e2e8f0;
   padding: 6px 12px;
   cursor: not-allowed;
-}
+} */
 
 ::-webkit-scrollbar {
     width: 0.25px /* Set the width of the scrollbar */

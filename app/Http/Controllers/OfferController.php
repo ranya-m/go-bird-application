@@ -13,8 +13,7 @@ class OfferController extends Controller
 {
     public function index()
     {
-        // $offers = Offer::query();
-        $offers =  Offer::query()->paginate(15);
+        $offers =  Offer::query()->paginate(16);
 
         if (Auth::check() && Auth::user()->host) {
             $hostId = Auth::user()->host->id;
@@ -159,66 +158,7 @@ class OfferController extends Controller
         $offer->delete();
         return redirect()->route('offers.index')->with('success', 'Offer deleted successfully.');
     }
-
-    // public function search(Request $request)
-    // {
-    //     $country = $request->input('country');
-    //     $city = $request->input('city');
-    //     $startDate = $request->input('start_date');
-    //     $endDate = $request->input('end_date');
-    //     $sortOption = $request->input('sort');
-        
     
-    //     $query = Offer::query();
-
-    
-    //     if ($country) {
-    //         $query->where('country', $country);
-    //     }
-    
-    //     if ($city) {
-    //         $query->where('city', $city);
-    //     }
-    
-    //     if ($startDate && $endDate) {
-    //         $query->whereDoesntHave('reservations', function ($subquery) use ($startDate, $endDate) {
-    //             $subquery->where('start_date', '<=', $endDate)
-    //                 ->where('end_date', '>=', $startDate);
-    //         });
-    //     }
-    
-    //     if ($sortOption === 'price_low_high') {
-    //         $query->orderBy('price', 'asc');
-    //     } elseif ($sortOption === 'price_high_low') {
-    //         $query->orderBy('price', 'desc');
-    //     } elseif ($sortOption === 'top_rated') {
-    //         $query->orderBy('rating', 'desc');
-    //     } elseif ($sortOption === 'most_popular') {
-    //         $query->withCount('reservations as reservations_count')
-    //         ->orderBy('reservations_count', 'desc');
-    //     }elseif ($sortOption === 'newest') {
-    //         $query->orderBy('created_at', 'desc');
-    //     }
-
-    //     $category = $request->input('category');
-
-    //     if ($category && $category !== 'all') {
-    //         $query->where('category', $category);
-    //     }
-
-    //     $offers = $query->get();
-
-    // // Unavailable Dates for reservation : 
-    // $unavailableDates = Reservation::getAllUnavailableDates($offers);
-    // $encUnavailableDates = json_encode($unavailableDates);
-    
-    //     return view('welcome', [
-    //         'offers' => $offers,
-    //         'sort' => $sortOption,
-    //         'category' => $category,
-    //         'encUnavailableDates' => $encUnavailableDates,
-    //     ]);    
-    // }
     public function search(Request $request)
 {
     $country = $request->input('country');

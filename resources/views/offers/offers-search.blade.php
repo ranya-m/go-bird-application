@@ -1,4 +1,4 @@
-    <form action="{{ route('offers.search') }}" method="GET" class="">
+    <form action="{{ route('offers.search') }}" method="GET" class="mt-2">
         <div class="mx-auto text-center w-fit rounded-2xl border border-solid border-neutral-200 focus:border-transparent focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none transition duration-200 ease-in-out focus:z-[3] shadow-md hover:shadow-lg">
 
             {{-- DESTINATION AND DATES OPTIONS --}}
@@ -51,8 +51,8 @@
                 
             </div> 
 
-            <button class="relative border border-l-neutral-200 border-y-transparent border-r-transparent sm:border-transparent rounded-r-2xl rounded-y-2xl" type="submit">
-                {{-- <x-iconpark-search-o class="text-cyan-500 w-5 hover:text-cyan-400  mx-2 sm:mr-2  sm:ml-0 " /> --}}
+            <button class="relative border border-l-neutral-200 border-y-transparent border-r-transparent sm:border-transparent rounded-r-2xl rounded-y-2xl mr-2 hover:opacity-70" type="submit">
+                <img src="/search.png" alt="Search" class="w-9 rounded-full">
             </button> 
         </div>
         @if (request()->filled('country') || request()->filled('city') || request()->filled('start_date') || request()->filled('end_date') || request()->filled('sort_option') || request()->filled('category'))
@@ -63,86 +63,86 @@
         </div>    
         
                 {{-- CATEGORIES OPTIONS --}}
-                <div class="grid grid-cols-5 sm:grid-cols-10 sm:space-y-0 justify-items-center my-2 text-xs 2xl:text-sm shadow-sm rounded-2xl lg:space-x-0 md:space-x-8 sm:space-x-10">
-                    <div class="ml-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2 grid grid-cols-1 justify-center">
+                <div class="mt-4 grid grid-cols-5 sm:grid-cols-10 sm:space-y-0 justify-items-center my-2 text-xs 2xl:text-sm shadow-sm rounded-2xl lg:space-x-0 md:space-x-8 sm:space-x-10">
+                    <div class="rounded-lg bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 grid grid-cols-1 justify-center">
                         <input type="hidden" id="category_all" name="category" value="all">
                         <div class="grid grid-cols-1 justify-center">
-                            <label for="category_all" class="text-neutral-500 mx-auto cursor-pointer inline-block text-center">
-                                <img src="/category/all.png" alt="Logo" class="w-7">
+                            <label for="category_all" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
+                                <img src="/category/all.png" alt="Logo" class="w-7 justify-self-center">
                                 All 
                             </label>
                         </div>
                     </div>
                    
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="luxe" name="category" value="luxe">
-                        <label for="luxe" class="text-neutral-500 mx-auto cursor-pointer inline-block text-center">
-                            <img src="/category/luxe.png" alt="Logo" class="w-7">
+                        <label for="luxe" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
+                            <img src="/category/luxe.png" alt="Logo" class="w-7 justify-self-center">
                         Luxe
                         </label>
                     </div>
                     
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="city" name="category" value="city"/>
-                            <label for="city" class="text-neutral-500 cursor-pointer inline-block text-center">
-                                <img src="/category/city.png" alt="Logo" class="w-7">
+                            <label for="city" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
+                                <img src="/category/city.png" alt="Logo" class="w-7 justify-self-center">
                                 City
                         </label>
                     </div>
 
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="beach" name="category" value="beach">
-                        <label for="beach" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <img src="/category/beach.png" alt="Logo" class="w-7">
+                        <label for="beach" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
+                            <img src="/category/beach.png" alt="Logo" class="w-7 justify-self-center">
                             Beach
                         </label>
                     </div>
                     
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-4 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                             <input type="hidden" id="rural" name="category" value="rural">
-                            <label for="rural" class="text-neutral-500 cursor-pointer inline-block text-center">
-                                <img src="/category/rural.png" alt="Logo" class="w-7">
+                            <label for="rural" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
+                                <img src="/category/rural.png" alt="Logo" class="w-7 justify-self-center">
                                 Rural
                             </label>
                     </div>
 
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                             <input type="hidden" id="rural" name="category" value="rural">
-                            <label for="rural" class="text-neutral-500 cursor-pointer inline-block text-center">
-                                <img src="/category/mountain.png" alt="Logo" class="w-7">
+                            <label for="rural" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
+                                <img src="/category/mountain.png" alt="Logo" class="w-7 justify-self-center">
                                 Mountain
                             </label>
                     </div>
 
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="island" name="category" value="island">
-                        <label for="island" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <img src="/category/island.png" alt="Logo" class="w-7">
+                        <label for="island" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
+                            <img src="/category/island.png" alt="Logo" class="w-7 justify-self-center">
                             Island
                         </label>
                     </div>
 
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="desert" name="category" value="desert">
-                        <label for="desert" class="text-neutral-500 cursor-pointer  inline-block text-center">
-                            <img src="/category/desert.png" alt="Logo" class="w-7">
+                        <label for="desert" class="text-neutral-500 cursor-pointer  grid grid-rows-2 text-center">
+                            <img src="/category/desert.png" alt="Logo" class="w-7 justify-self-center">
                             Desert
                         </label>
                     </div>
 
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="traditional" name="category" value="traditional">
-                        <label for="traditional" class="text-neutral-500 cursor-pointer inline-block text-center">
-                            <img src="/category/traditional.png" alt="Logo" class="w-7">
+                        <label for="traditional" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
+                            <img src="/category/traditional.png" alt="Logo" class="w-7 justify-self-center">
 
                             Traditional
                         </label>
                     </div>
 
-                    <div class="mt-2 rounded-lg bg-transparent hover:bg-neutral-200 focus:bg-neutral-200 focus:outline-none cursor-pointer max-w-fit p-2 mr-2">
+                    <div class="mt-2 rounded-lg bg-transparent hover:opacity-50  focus:outline-none cursor-pointer max-w-fit p-2">
                         <input type="hidden" id="boat" name="category" value="boat">
-                        <label for="boat" class="text-neutral-500  cursor-pointer inline-block text-center">
-                            <img src="/category/boat.png" alt="Logo" class="w-7">
+                        <label for="boat" class="text-neutral-500  cursor-pointer grid grid-rows-2 text-center">
+                            <img src="/category/boat.png" alt="Logo" class="w-7 justify-self-center">
                             Boat
                         </label>
                     </div>
