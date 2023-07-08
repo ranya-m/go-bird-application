@@ -13,7 +13,8 @@ class OfferController extends Controller
 {
     public function index()
     {
-        $offers =  Offer::query()->paginate(16);
+        $offersQuery = Offer::query();
+        $offers =  $offersQuery->paginate(16);
 
         if (Auth::check() && Auth::user()->host) {
             $hostId = Auth::user()->host->id;
@@ -171,6 +172,7 @@ class OfferController extends Controller
 
     $query = Offer::query();
 
+
     if ($country) {
         $query->where('country', $country);
     }
@@ -203,11 +205,11 @@ class OfferController extends Controller
         $query->where('category', $category);
     }
 
-
-    $offers = $query->get();
     $unavailableDates = Reservation::getAllUnavailableDates($offers);
     $encUnavailableDates = json_encode($unavailableDates);
 
+
+        $offers =  $query->paginate(16);
 
 
     return view('welcome', [

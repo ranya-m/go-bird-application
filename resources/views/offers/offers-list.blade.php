@@ -32,11 +32,5 @@
 @endif
 </div>
 
-
-<!-- Pagination links -->
-@if ($offers->hasPages())
-<div class="flex justify-center my-4">
     {{ $offers->links() }}
     {{-- {{ $offers->links('pagination.custom') }} --}}
-</div> 
-@endif

@@ -7,6 +7,13 @@ window.Alpine = Alpine;
 
 Alpine.start();
 
+// Category filter :
+// function handleCategoryFilter(category) {
+//   const categoryInput = document.querySelector('input[name="category"]');
+//   categoryInput.value = category;
+//   categoryInput.closest('form').submit();
+// }
+
 // Redirect guest after clicking nav link 'List property' :
 // const becomeHostRoute = "{{ route('become.host') }}";
 // const registerRoute = "{{ route('register') }}";
