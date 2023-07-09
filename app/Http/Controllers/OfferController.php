@@ -171,7 +171,6 @@ class OfferController extends Controller
 
     $query = Offer::query();
 
-
     // Filter by destination
     if ($country) {
         $query->where('country', $country);
@@ -188,7 +187,7 @@ class OfferController extends Controller
         });
     }
 
-    // Sort By : price, rating, popularity, newest arrival.
+    // Sort By: price, rating, popularity, newest arrival.
     if ($sortOption === 'price_low_high') {
         $query->orderBy('price', 'asc');
     } elseif ($sortOption === 'price_high_low') {
@@ -201,19 +200,16 @@ class OfferController extends Controller
         $query->orderBy('created_at', 'desc');
     }
 
-    
-       if ($category === null) {
-        // Display all offers, All categories
-        $offers = Offer::paginate(16);
-    } else {
-        // Filter the offers based on the selected category
-        $offers = Offer::where('category', $category)->paginate(16);
+    // Apply category filter if selected
+    if ($category) {
+        $query->where('category', $category);
     }
+
+    $offers = $query->paginate(16);
 
     // Get unavailable dates to be excluded from the chosen offers
     $unavailableDates = Reservation::getAllUnavailableDates($offers);
     $encUnavailableDates = json_encode($unavailableDates);
-
 
     return view('welcome', [
         'offers' => $offers,
@@ -221,6 +217,8 @@ class OfferController extends Controller
         'category' => $category,
         'encUnavailableDates' => $encUnavailableDates,
     ]);
-}   
+}
+
+      
 }
 
