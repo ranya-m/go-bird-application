@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-2xl text-neutral-800 leading-tight">
             {{ __('My Host Dashboard') }}
         </h2>
     </x-slot>
@@ -22,7 +22,7 @@
             </div> --}}
 
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-            <h2 class="font-semibold text-2xl text-gray-800 leading-tight py-4">All Reservations</h2>
+            <h2 class="font-semibold text-2xl text-neutral-800 leading-tight py-4">All Reservations</h2>
 
             <h2>Pending Reservations Requests</h2>
             <x-primary-button>

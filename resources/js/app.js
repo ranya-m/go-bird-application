@@ -1,7 +1,7 @@
 import './bootstrap';
-import Alpine from 'alpinejs';
 import { openPhotosModalButton, closePhotosModalButton, photosModal, showAllPhotos, closeAllPhotos } from './photosModal';
 // import '/intlTelInput.js';
+import Alpine from 'alpinejs';
 
 window.Alpine = Alpine;
 
@@ -129,6 +129,8 @@ if (openPhotosModalButton) {
   }
 
 
+
+
 // Messaging system :
 
 // class ChatComponent {
@@ -216,9 +218,9 @@ if (openPhotosModalButton) {
 //       const li = document.createElement('li');
 //       li.className = `message ${message.position === 'left' ? 'message-left' : 'message-right'}`;
 //       li.innerHTML = `
-//         <div class="message-content bg-gray-100 rounded-lg px-4 py-2">
+//         <div class="message-content bg-neutral-100 rounded-lg px-4 py-2">
 //           <div class="message-text text-sm">${message.content}</div>
-//           <div class="message-timestamp text-xs text-gray-500 mt-1">${message.timestamp}</div>
+//           <div class="message-timestamp text-xs text-neutral-500 mt-1">${message.timestamp}</div>
 //         </div>
 //       `;
 //       this.messageList.appendChild(li);

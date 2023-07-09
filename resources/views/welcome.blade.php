@@ -10,7 +10,7 @@
                 @include('offers.offers-sort')
                 </div>
 
-                <div class="px-6 pt-3 pb-10 text-gray-900">
+                <div class="px-6 pt-3 pb-10 text-neutral-900">
                     @include('offers.offers-list', ['offers' => $offers])
                 </div>
             </div>

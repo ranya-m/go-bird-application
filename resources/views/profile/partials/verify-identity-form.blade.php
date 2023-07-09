@@ -1,10 +1,10 @@
 <div>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-neutral-900">
             {{ __('Identity Information') }}
         </h2>
         
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-neutral-600">
             @if (!$user->hasVerifiedIdentity() && !$user->hasUploadedIdentityDocument())
             {{ __("You must verify these informations first to be able to book.") }}
             @elseif($user->hasVerifiedIdentity())

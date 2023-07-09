@@ -19,4 +19,4 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 </head>
-<body x-data="{ open: false }" x-cloak class="flex flex-col justify-between min-h-screen p-4 bg-gray-100 dark:bg-gray-900 text-gray-900 font-sans antialiased">
+<body x-data="{ open: false }" x-cloak class="flex flex-col justify-between min-h-screen p-4 bg-neutral-100 dark:bg-neutral-900 text-neutral-900 font-sans antialiased">

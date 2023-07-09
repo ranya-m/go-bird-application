@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-2xl text-neutral-800 leading-tight">
             {{ __('Public profile') }}
         </h2>
     </x-slot>
@@ -34,10 +34,10 @@
                 <img src="{{ $offer->photos[0] }}" alt="Offer Photos" class="rounded-lg bg-cover object-cover w-full h-48">
                 <div class="flex flex-row justify-between items-start mt-4">
                     <div>
-                        <p class="text-sm text-gray-800 font-bold">{{ $offer->city }}, {{ $offer->country }}</p>
-                        <p class="text-sm text-gray-800">{{ $offer->title }}</p>
-                        <p class="text-sm text-gray-800">Aug 18-25</p>
-                        <p class="text-sm text-gray-800 mt-2"> <strong>{{ $offer->price }}</strong> per night</p>
+                        <p class="text-sm text-neutral-800 font-bold">{{ $offer->city }}, {{ $offer->country }}</p>
+                        <p class="text-sm text-neutral-800">{{ $offer->title }}</p>
+                        <p class="text-sm text-neutral-800">Aug 18-25</p>
+                        <p class="text-sm text-neutral-800 mt-2"> <strong>{{ $offer->price }}</strong> per night</p>
                         <p>Hosted by {{ $offer->host->user->name }}</p>
                     </div>
                     @if ($offer->rating)

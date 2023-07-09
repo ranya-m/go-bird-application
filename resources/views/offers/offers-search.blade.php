@@ -8,7 +8,7 @@
                 for="country"
                 class="block overflow-hidden border border-t-transparent border-x-transparent border-b-neutral-200 xs:border-transparent focus:border-transparent pt-0 xs:pt-1"
                 >
-                <span class="destination text-xs font-medium text-gray-500"> Destination </span>
+                <span class="destination text-xs font-medium text-neutral-500"> Destination </span>
                 <input
                 type="text"
                 name="country"
@@ -23,7 +23,7 @@
                 for="start_date"
                 class="block overflow-hidden border  border-transparent xs:border-y-transparent xs:border-x-neutral-200  focus:border-transparent pt-1 "
                 >
-                <span class="text-xs font-medium text-gray-500 "> Start Date </span>
+                <span class="text-xs font-medium text-neutral-500 "> Start Date </span>
                 <input
                 type="date"
                 name="start_date"
@@ -37,7 +37,7 @@
                 for="end_date"
                 class="block overflow-hidden xs:rounded-md border border-x-transparent border-y-neutral-200 xs:border-transparent focus:border-transparent pt-1 "
                 >
-                <span class="text-xs font-medium text-gray-500"> End Date </span>
+                <span class="text-xs font-medium text-neutral-500"> End Date </span>
                 <input
                 type="date"
                 name="end_date"
@@ -54,7 +54,7 @@
                 
             </div> 
             <button class="relative py-2 xs:py-0 rounded-r-2xl rounded-y-2xl px-2 md:mr-2 md:ml-0 hover:opacity-70 flex mx-auto text-center place-items-center" type="submit">
-                <span class="text-xs font-semibold text-gray-800  justify-center content-center mr-2 xs:hidden">Search </span>
+                <span class="text-xs font-semibold text-neutral-800  justify-center content-center mr-2 xs:hidden">Search </span>
                 <img src="/search.png" alt="Search" class="w-9 rounded-full">
             </button>
 

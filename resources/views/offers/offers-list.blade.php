@@ -11,13 +11,13 @@
                 <a href="{{ route('offers.detail', ['offerId' => $offer->id]) }}">
                     <div class="relative h-52 2xl:h-60 rounded-lg overflow-hidden">
                     <img src="{{ $offer->photos[0] }}" alt="Offer Photos" class=" bg-cover object-cover w-full h-full">
-                    <p class=" text-gray-800 text-sm 2xl:text-base absolute bottom-1.5 right-0 bg-neutral-50 rounded-l-lg py-0 px-2 opacity-90"> <strong>{{ $offer->price }}</strong> per night</p>
+                    <p class=" text-neutral-800 text-sm 2xl:text-base absolute bottom-1.5 right-0 bg-neutral-50 rounded-l-lg py-0 px-2 opacity-90"> <strong>{{ $offer->price }}</strong> per night</p>
                     </div>
                     {{-- <img src={{ asset('storage/photos/photo.jpeg') }} alt="Offer Photos" class="rounded-lg bg-cover object-cover w-full h-48 2xl:h-60"> --}}
                     <div class="relative flex flex-row justify-between items-start mt-4">
                         <div class="text-sm 2xl:text-base">
-                            <p class=" text-gray-800 font-bold">{{ $offer->city }}, {{ $offer->country }}</p>
-                            <p class="text-gray-600">{{ $offer->title }}</p>
+                            <p class=" text-neutral-800 font-bold">{{ $offer->city }}, {{ $offer->country }}</p>
+                            <p class="text-neutral-600">{{ $offer->title }}</p>
                             {{-- <p>Hosted by {{ $offer->host->user->name }}</p> --}}
 
                         </div>

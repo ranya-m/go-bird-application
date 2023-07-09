@@ -31,6 +31,7 @@ class OfferController extends Controller
     {
         $offer = Offer::findOrFail($id);
         $user = $offer->host->user;
+
         return view('offers.offer-details', [
             'offer' => $offer,
             'user' => $user,
