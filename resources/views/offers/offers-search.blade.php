@@ -70,73 +70,74 @@
 
 {{-- CATEGORIES OPTIONS --}}
 <div class="justify-items-center justify-center mt-4 grid grid-cols-5 sm:grid-cols-10 my-2 text-xs 2xl:text-xs border border-b-neutral-100 shadow-xs rounded-2xl border-t-transparent border-x-transparent">
-    <a href="{{ route('offers.search') }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => null])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(empty(Request::input('category'))) border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_all" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/all.png" alt="Logo" class="w-7 justify-self-center">
             All
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'luxe']) }}" class=" bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'luxe') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'luxe'])) }}" class=" bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'luxe') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_luxe" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/luxe.png" alt="Logo" class="w-7 justify-self-center">
             Luxe
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'city']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'city') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'city'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'city') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_city" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/city.png" alt="Logo" class="w-7 justify-self-center">
             City
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'beach']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'beach') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'beach'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'beach') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_beach" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/beach.png" alt="Logo" class="w-7 justify-self-center">
             Beach
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'rural']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'rural') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'rural'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'rural') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_rural" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/rural.png" alt="Logo" class="w-7 justify-self-center">
             Rural
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'mountain']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'mountain') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'mountain'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'mountain') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_mountain" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/mountain.png" alt="Logo" class="w-7 justify-self-center">
             Mountain
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'desert']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'desert') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'desert'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'desert') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_desert" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/desert.png" alt="Logo" class="w-7 justify-self-center">
             Desert
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'traditional']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'traditional') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'traditional'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'traditional') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_traditional" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/traditional.png" alt="Logo" class="w-7 justify-self-center">
             Traditional
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'boat']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'boat') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'boat'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'boat') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_boat" class="text-neutral-500 mx-auto cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/boat.png" alt="Logo" class="w-7 justify-self-center">
             Boat
         </label>
     </a>
 
-    <a href="{{ route('offers.search', ['category' => 'island']) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'island') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
+    <a href="{{ route('offers.search', array_merge(request()->except('category'), ['category' => 'island'])) }}" class="bg-transparent hover:opacity-50 focus:outline-none cursor-pointer max-w-fit p-2 @if(Request::input('category') === 'island') border border-b-2 border-b-cyan-500 border-x-transparent border-t-transparent @endif">
         <label for="category_island" class="text-neutral-500 cursor-pointer grid grid-rows-2 text-center">
             <img src="/category/island.png" alt="Logo" class="w-7 justify-self-center">
             Island
         </label>
     </a>
 </div>
+
