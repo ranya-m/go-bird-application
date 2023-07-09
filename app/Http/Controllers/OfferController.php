@@ -169,18 +169,18 @@ class OfferController extends Controller
     $sortOption = $request->input('sort');
     $category = $request->input('category');
 
-
     $query = Offer::query();
 
 
+    // Filter by destination
     if ($country) {
         $query->where('country', $country);
     }
-
     if ($city) {
         $query->where('city', $city);
     }
 
+    // Filter by dates where offer is free of other reservations
     if ($startDate && $endDate) {
         $query->whereDoesntHave('reservations', function ($subquery) use ($startDate, $endDate) {
             $subquery->where('start_date', '<=', $endDate)
@@ -188,6 +188,7 @@ class OfferController extends Controller
         });
     }
 
+    // Sort By : price, rating, popularity, newest arrival.
     if ($sortOption === 'price_low_high') {
         $query->orderBy('price', 'asc');
     } elseif ($sortOption === 'price_high_low') {
@@ -201,15 +202,17 @@ class OfferController extends Controller
     }
 
     
-    if ($category && $category !== 'all') {
-        $query->where('category', $category);
+       if ($category === null) {
+        // Display all offers, All categories
+        $offers = Offer::paginate(16);
+    } else {
+        // Filter the offers based on the selected category
+        $offers = Offer::where('category', $category)->paginate(16);
     }
 
+    // Get unavailable dates to be excluded from the chosen offers
     $unavailableDates = Reservation::getAllUnavailableDates($offers);
     $encUnavailableDates = json_encode($unavailableDates);
-
-
-        $offers =  $query->paginate(16);
 
 
     return view('welcome', [
@@ -218,9 +221,6 @@ class OfferController extends Controller
         'category' => $category,
         'encUnavailableDates' => $encUnavailableDates,
     ]);
-}
-
-    
-    
+}   
 }
 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id()->unique();
             $table->string('title');
             $table->enum('type', ['House', 'Apartment', 'Hotel', 'Guesthouse']);
-            $table->enum('category', ['Beach', 'Seaside', 'Countryside', 'Mountain', 'Lake', 'Luxe', 'Traditional', 'Farm', 'Island', 'Camping', 'Boats', 'Houseboats', 'Desert', 'cityLife', 'Ski resort']);
+            $table->enum('category', ['luxe','beach','city','traditional','mountain','island','desert','boat','rural'])->nullable();
             $table->string('city');
             $table->string('country');
             $table->enum('region', ['Africa', 'Middle East', 'Europe', 'Americas', 'Asia Pacific'])->nullable();
