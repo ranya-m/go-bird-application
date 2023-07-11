@@ -9,11 +9,12 @@ use Illuminate\Support\Facades\Response;
 
 class MessageController extends Controller
 {
-    public function index()
+    public function index(User $user)
     {
-        $users = User::all(); // Fetch all users
-        return view('chat', compact('users'));
+        $users = User::all();
+        return view('chat', compact('users', 'user'));
     }
+
     public function getMessages(Request $request)
     {
         $user = auth()->user();

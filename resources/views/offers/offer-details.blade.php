@@ -76,10 +76,32 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 my-2">
                     <div>
                         
+
+                        <p class=" text-neutral-800 font-bold">About the property</p>
+
+                        <p class="2xl:text-base text-sm text-neutral-800 text-justify leading-relaxed">{{ $offer->description }}
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, aperiam dolorem! Nam esse sapiente veniam in beatae sed soluta incidunt, excepturi, amet numquam tempora molestiae adipisci omnis, deserunt autem cum! Voluptatem, ea pariatur voluptate odit consequatur nulla inventore. At nulla, officiis laborum quam quaerat culpa accusantium, accusamus aperiam ducimus sed reprehenderit voluptas cum, ut vitae nam necessitatibus ipsum saepe illum tenetur impedit eaque nobis similique. <br> Sint inventore consequatur aut saepe, ea dolore asperiores debitis suscipit unde itaque culpa ad, mollitia dolores vel eligendi enim alias iure error modi, pariatur laudantium voluptate? Distinctio minus, molestias reprehenderit nulla perspiciatis culpa harum repellendus voluptates perferendis animi tempora iste, id cupiditate a qui facere tempore illo nobis eos placeat repudiandae atque delectus aliquam architecto! Itaque iusto inventore reiciendis quibusdam aperiam veritatis at veniam soluta cupiditate doloribus exercitationem ut similique quaerat animi repudiandae neque distinctio repellat quia, possimus quam quidem praesentium, porro fugit saepe. <br> Quia reiciendis expedita, iste ipsum odio tempora, qui libero natus nam, repellendus labore iusto atque odit! Voluptatibus culpa at quasi saepe. Commodi adipisci aspernatur magnam similique consectetur recusandae aperiam doloremque veniam iusto nemo, animi minus velit eos odit fugiat dolores molestiae dolorem. Tenetur assumenda, consequuntur sunt similique itaque numquam laboriosam magnam?</p>
+                        
+                        <p class="  text-neutral-800 font-bold">About the host
+                        </p>
                         @if(isset($user))
-                        <a class="cursor-pointer" href="{{ route('public-profile.show', $user) }}">Hosted by {{ $offer->host->user->name }}</a>
+                        <a class="cursor-pointer" href="{{ route('public-profile.show', $user) }}"> 
+                            @if($user->profile_pic) {
+                            <img src="{{ $offer->host->user->profile_pic }}" alt="Profile Photo"> 
+                            }@else
+                            <img class="w-36" src="https://icon-library.com/images/android-profile-icon/android-profile-icon-26.jpg" alt="Profile Photo">
+                            @endif
+                            <p class="text-neutral-800 font-bold">Hosted by{{ $offer->host->user->name }}</p>
+
+                        </a>
                         @endif
-                        <p class="text-sm text-neutral-800">{{ $offer->description }}</p>
+                        
+                        <x-secondary-button>
+                            <a href="{{ route('messages.index', $offer->host->user) }}">
+                                Contact
+                            </a>
+                        </x-secondary-button>
+
                     </div>
 
                     <div>
@@ -127,13 +149,6 @@
                         </a>
                         </x-primary-button>
                         <p>You won't be charged yet</p>
-
-
-                        
-                        
-                        
-                        
-
                     </div>
                 </div>
 

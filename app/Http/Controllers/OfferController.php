@@ -37,6 +37,25 @@ class OfferController extends Controller
             'user' => $user,
         ]);    
     }
+
+    public function reservationPreview($id, Reservation $reservation)
+    {
+        $offer = Offer::findOrFail($id);
+        $user = $offer->host->user;
+
+        // Number of Nights between start and end date selected by user
+        $numberOfNights = Reservation::numberOfNights($offer->id);
+        
+        // Unavailable Dates for reservation : 
+        $unavailableDates = Reservation::getUnavailableDates($offer->id);
+        $encUnavailableDates = json_encode($unavailableDates);
+        
+        return view('offers.offer-details', ['offer' => $offer, 
+            'reservations' => json_encode($offer->reservations),
+            'encUnavailableDates' => $encUnavailableDates,
+            'user' => $user,
+        ]);        
+    }
     
     public function create()
     {

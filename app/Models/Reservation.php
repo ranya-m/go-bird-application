@@ -43,13 +43,22 @@ class Reservation extends Model
         return $this->hasMany(Payment::class);
     }
 
-    public function numberOfNights()
+    public function numberOfNights($offerId)
     {
         $startDate = Carbon::parse($this->start_date);
         $endDate = Carbon::parse($this->end_date);
     
         return $startDate->diffInDays($endDate);    
     }
+
+    public function getTotalPrice($offerId)
+{
+    $pricePerNight = $this->offer->price;
+    $numberOfNights = $this->numberOfNights($offerId);
+
+    return $pricePerNight * $numberOfNights;
+}
+
 
     public static function getUnavailableDates($offerId)
     {
