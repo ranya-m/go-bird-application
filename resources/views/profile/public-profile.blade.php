@@ -10,7 +10,7 @@
         @if($user->profile_pic) {
             <img src="{{ $user->profile_pic }}" alt="Profile Photo">
         }@else
-        <img class="w-36" src="https://icon-library.com/images/android-profile-icon/android-profile-icon-26.jpg" alt="Profile Photo">
+        <img class="w-36" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="Profile Photo">
         @endif
         <!-- Display user information -->
         <p>Name: {{ $user->name }}</p>

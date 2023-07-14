@@ -31,10 +31,26 @@ class OfferController extends Controller
     {
         $offer = Offer::findOrFail($id);
         $user = $offer->host->user;
+        $startDate = request()->input('start_date');
+        $endDate = request()->input('end_date');
+
+            
+        // $startDate = \Carbon\Carbon::parse(request()->input('start_date'));
+        // $endDate = \Carbon\Carbon::parse(request()->input('end_date'));
+        // $numberOfNights = $startDate->diffInDays($endDate);
+        // $totalPrice = $numberOfNights * $offer->price;
+    
+        $unavailableDates = Reservation::getUnavailableDates($offer->id);
+        $encUnavailableDates = json_encode($unavailableDates);
+
 
         return view('offers.offer-details', [
             'offer' => $offer,
             'user' => $user,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
+            'reservations' => json_encode($offer->reservations),
+            'encUnavailableDates' => $encUnavailableDates,
         ]);    
     }
 
@@ -42,20 +58,28 @@ class OfferController extends Controller
     {
         $offer = Offer::findOrFail($id);
         $user = $offer->host->user;
-
-        // Number of Nights between start and end date selected by user
-        $numberOfNights = Reservation::numberOfNights($offer->id);
-        
-        // Unavailable Dates for reservation : 
+    
+        // $startDate = \Carbon\Carbon::parse(request()->input('start_date'));
+        // $endDate = \Carbon\Carbon::parse(request()->input('end_date'));
+        // $numberOfNights = $startDate->diffInDays($endDate);
+        // $totalPrice = $numberOfNights * $offer->price;
+    
         $unavailableDates = Reservation::getUnavailableDates($offer->id);
         $encUnavailableDates = json_encode($unavailableDates);
-        
-        return view('offers.offer-details', ['offer' => $offer, 
+
+
+        return view('offers.offer-details', [
+            'offer' => $offer,
             'reservations' => json_encode($offer->reservations),
             'encUnavailableDates' => $encUnavailableDates,
             'user' => $user,
-        ]);        
+            
+        ]);
     }
+
+    
+    
+    
     
     public function create()
     {

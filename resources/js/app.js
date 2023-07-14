@@ -119,6 +119,30 @@ Alpine.start();
 // });
 
 
+// Reservation Preview (Offer detail page): Total price of number of nights
+document.addEventListener('alpine:init', () => {
+    Alpine.data('reservationPreview', () => ({
+        startDate: '',
+        endDate: '',
+        numberOfNights: 0,
+        totalPrice: 0,
+
+        calculateTotalPrice() {
+            const startDate = new Date(this.startDate);
+            const endDate = new Date(this.endDate);
+
+            if (startDate && endDate && startDate <= endDate) {
+                const diffInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+                this.numberOfNights = diffInDays;
+                this.totalPrice = {{ $offer->price }} * diffInDays;
+            } else {
+                this.numberOfNights = 0;
+                this.totalPrice = 0;
+            }
+        },
+    }));
+});
+
 // Photos Modal :
 if (openPhotosModalButton) {
     openPhotosModalButton.addEventListener('click', showAllPhotos);
@@ -129,10 +153,7 @@ if (openPhotosModalButton) {
   }
 
 
-
-
 // Messaging system :
-
 class ChatComponent {
   constructor() {
     this.users = [];
@@ -260,4 +281,4 @@ class ChatComponent {
   }
 }
 
-const chatComponent = new ChatComponent({{ $user->id }});
+const chatComponent = new ChatComponent('{{ $user->id }}');

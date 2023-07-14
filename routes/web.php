@@ -69,6 +69,7 @@ Route::get('/search', [OfferController::class, 'search'])->name('offers.search')
 // Selected offer details
 Route::get('/offers/{offerId}', [OfferController::class, 'detail'])->name('offers.detail');
 
+
 // Reservations 
 Route::middleware('auth')->group(function () {
     Route::get('/reservations/create/{offerId}', [ReservationController::class, 'create'])->name('reservations.create');

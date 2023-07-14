@@ -36,29 +36,32 @@ class Reservation extends Model
         return $this->status === 'canceled';
     }
 
-
-
     public function payments()
     {
         return $this->hasMany(Payment::class);
     }
 
-    public function numberOfNights($offerId)
-    {
-        $startDate = Carbon::parse($this->start_date);
-        $endDate = Carbon::parse($this->end_date);
+    //     public function numberOfNights($offerId)
+    // {
+    //     $startDate = Carbon::parse($this->start_date);
+    //     $endDate = Carbon::parse($this->end_date);
+
+    //     return $startDate->diffInDays($endDate);    
+    // }
+
+    // public function getTotalPrice()
+    // {
+    //     $offer = $this->offer; 
+
+    //     if ($offer) {
+    //         $pricePerNight = $offer->price;
+    //         $numberOfNights = $this->numberOfNights();
     
-        return $startDate->diffInDays($endDate);    
-    }
-
-    public function getTotalPrice($offerId)
-{
-    $pricePerNight = $this->offer->price;
-    $numberOfNights = $this->numberOfNights($offerId);
-
-    return $pricePerNight * $numberOfNights;
-}
-
+    //         return $pricePerNight * $numberOfNights;
+    //     }
+    
+    //     return 0;
+    // }
 
     public static function getUnavailableDates($offerId)
     {

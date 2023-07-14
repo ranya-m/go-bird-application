@@ -3,37 +3,47 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
-
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+
 
 
 class ReservationController extends Controller
 {
-    public function create($offerId, Reservation $reservation)
+        public function create($offerId, Reservation $reservation)
     {
-        
-    if (Auth::check() && Auth::user()->host) {
-        $hostId = Auth::user()->host->id;
-        $offer = Offer::whereNotIn('host_id', [$hostId])->findOrFail($offerId);
-    }else{
-        $offer = Offer::findOrFail($offerId);
+        if (Auth::check() && Auth::user()->host) {
+            $hostId = Auth::user()->host->id;
+            $offer = Offer::whereNotIn('host_id', [$hostId])->findOrFail($offerId);
+        } else {
+            $offer = Offer::findOrFail($offerId);
+        }
+
+        // Unavailable Dates for reservation:
+        $unavailableDates = Reservation::getUnavailableDates($offer->id);
+        $encUnavailableDates = json_encode($unavailableDates);
+
+        // Total price and number of nights depending on the dates inputs:
+        $startDate = Carbon::parse(request()->input('start_date'));
+        $endDate = Carbon::parse(request()->input('end_date'));
+        $pricePerNight = $offer->price;
+        $numberOfNights = $startDate->diffInDays($endDate); 
+        $totalPrice = $pricePerNight * $numberOfNights;
+
+        return view('reservations.create', [
+            'offer' => $offer,
+            'reservations' => json_encode($offer->reservations),
+            'encUnavailableDates' => $encUnavailableDates,
+            'numberOfNights' => $numberOfNights,
+            'totalPrice' => $totalPrice,
+        ]);
     }
 
-    // Unavailable Dates for reservation : 
-    $unavailableDates = Reservation::getUnavailableDates($offer->id);
-    $encUnavailableDates = json_encode($unavailableDates);
-
-    return view('reservations.create', ['offer' => $offer, 
-        'reservations' => json_encode($offer->reservations),
-        'encUnavailableDates' => $encUnavailableDates
-    ]);        
-
-    }
 
         public function store(Request $request, Reservation $reservation)
     {
@@ -45,6 +55,8 @@ class ReservationController extends Controller
 
         $offerId = $request->input('offer_id');
         $offer = Offer::findOrFail($offerId);
+
+    
 
         // Create the reservation
         $reservation = Reservation::create([
