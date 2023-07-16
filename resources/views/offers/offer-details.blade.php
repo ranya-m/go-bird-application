@@ -1,7 +1,6 @@
 <x-app-layout>
 
     <div class="mt-5 mx-10">
-
             <div class="w-full mb-2">
 
                 <p class="text-xl 2xl:text-2xl font-semibold text-neutral-800 my-2">{{ $offer->title }}</p>
@@ -200,6 +199,6 @@
 
                   </div>  
             </div>                
-        </div>       
+    </div>       
     </div>
 </x-app-layout>

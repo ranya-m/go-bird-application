@@ -120,28 +120,28 @@ Alpine.start();
 
 
 // Reservation Preview (Offer detail page): Total price of number of nights
-document.addEventListener('alpine:init', () => {
-    Alpine.data('reservationPreview', () => ({
-        startDate: '',
-        endDate: '',
-        numberOfNights: 0,
-        totalPrice: 0,
+// document.addEventListener('alpine:init', () => {
+//     Alpine.data('reservationPreview', () => ({
+//         startDate: '',
+//         endDate: '',
+//         numberOfNights: 0,
+//         totalPrice: 0,
 
-        calculateTotalPrice() {
-            const startDate = new Date(this.startDate);
-            const endDate = new Date(this.endDate);
+//         calculateTotalPrice() {
+//             const startDate = new Date(this.startDate);
+//             const endDate = new Date(this.endDate);
 
-            if (startDate && endDate && startDate <= endDate) {
-                const diffInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
-                this.numberOfNights = diffInDays;
-                this.totalPrice = {{ $offer->price }} * diffInDays;
-            } else {
-                this.numberOfNights = 0;
-                this.totalPrice = 0;
-            }
-        },
-    }));
-});
+//             if (startDate && endDate && startDate <= endDate) {
+//                 const diffInDays = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+//                 this.numberOfNights = diffInDays;
+//                 this.totalPrice = {{ $offer->price }} * diffInDays;
+//             } else {
+//                 this.numberOfNights = 0;
+//                 this.totalPrice = 0;
+//             }
+//         },
+//     }));
+// });
 
 // Photos Modal :
 if (openPhotosModalButton) {
@@ -152,6 +152,30 @@ if (openPhotosModalButton) {
     closePhotosModalButton.addEventListener('click', closeAllPhotos);
   }
 
+  
+// Event listener for date inputs
+document.addEventListener('DOMContentLoaded', () => {
+  const startDateInput = document.getElementById('start_date');
+  const endDateInput = document.getElementById('end_date');
+
+  // Function to update the total price
+  const updateTotalPrice = () => {
+      const startDate = startDateInput.value;
+      const endDate = endDateInput.value;
+
+      // Make a request to the server or calculate the total price here
+      // Replace the following line with your actual logic
+      const totalPrice = 100; // Example value, replace with your calculation
+
+      // Update the total price element
+      const totalPriceElement = document.getElementById('total_price');
+      totalPriceElement.textContent = `$${totalPrice}`;
+  };
+
+  // Event listeners for date inputs
+  startDateInput.addEventListener('change', updateTotalPrice);
+  endDateInput.addEventListener('change', updateTotalPrice);
+});
 
 // Messaging system :
 class ChatComponent {
