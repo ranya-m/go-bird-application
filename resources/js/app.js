@@ -152,30 +152,33 @@ if (openPhotosModalButton) {
     closePhotosModalButton.addEventListener('click', closeAllPhotos);
   }
 
-  
-// Event listener for date inputs
-document.addEventListener('DOMContentLoaded', () => {
+// Real time update for total price, event listener : 
+document.addEventListener('DOMContentLoaded', function() {
   const startDateInput = document.getElementById('start_date');
   const endDateInput = document.getElementById('end_date');
+  const totalPriceElement = document.getElementById('total_price');
+  const numberOfNightsElement = document.getElementById('number_of_nights');
 
-  // Function to update the total price
-  const updateTotalPrice = () => {
-      const startDate = startDateInput.value;
-      const endDate = endDateInput.value;
+  function calculateTotalPrice() {
+      const startDate = new Date(startDateInput.value);
+      const endDate = new Date(endDateInput.value);
+      const pricePerNight = parseFloat(totalPriceElement.dataset.pricePerNight);
+      const numberOfNights = (endDate - startDate) / (1000 * 60 * 60 * 24);
+      const totalPrice = pricePerNight * numberOfNights;
 
-      // Make a request to the server or calculate the total price here
-      // Replace the following line with your actual logic
-      const totalPrice = 100; // Example value, replace with your calculation
+      totalPriceElement.textContent = totalPrice.toFixed(2);
+      numberOfNightsElement.textContent = numberOfNights;
 
-      // Update the total price element
-      const totalPriceElement = document.getElementById('total_price');
-      totalPriceElement.textContent = `$${totalPrice}`;
-  };
+      // Update the text based on the number of nights
+      const nightsText = numberOfNights === 1 ? 'night' : 'nights';
+      document.getElementById('nights_text').textContent = nightsText;
+  }
 
-  // Event listeners for date inputs
-  startDateInput.addEventListener('change', updateTotalPrice);
-  endDateInput.addEventListener('change', updateTotalPrice);
+  startDateInput.addEventListener('input', calculateTotalPrice);
+  endDateInput.addEventListener('input', calculateTotalPrice);
 });
+
+
 
 // Messaging system :
 class ChatComponent {

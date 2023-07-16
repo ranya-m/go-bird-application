@@ -6,9 +6,9 @@
     </x-slot>
 
 <div class="items-center justify-center p-12">
-        <div class="mx-auto w-full bg-white grid grid-cols-1 md:grid-cols-2">
+        <div class="mx-auto w-full bg-white grid grid-cols-1 md:grid-cols-2" >
             {{-- Guest Informations Form --}}
-            <form class="order-last md:order-first" action="{{ route('reservations.store', ['offerId' => $offer->id])}}" method="POST">
+            <form id="reservation-form" data-start-date="{{ $startDate }}" data-end-date="{{ $endDate }}" data-price-per-night="{{ $offer->price }}" class="order-last md:order-first" action="{{ route('reservations.store', ['offerId' => $offer->id])}}" method="POST">
                 @csrf
                 <input type="hidden" name="offer_id" value="{{ request('offerId') }}">
 
@@ -76,8 +76,10 @@
                     </label>
                     <input
                         type="date"
-                        name="start_date" value="{{ request()->input('start_date') ?? $startDate }}" id="start_date" data-unavailable-dates="{{ $encUnavailableDates }}"  required
+                        name="start_date" value="{{ request()->input('start_date') ?? $startDate }}" id="start_date" data-unavailable-dates="{{ $encUnavailableDates }}" 
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        onchange="updateTotalPrice()"
+                        required
                     />
                     </div>
                 </div>
@@ -93,6 +95,8 @@
                         type="date"
                         name="end_date"  value="{{ request()->input('end_date') ?? $endDate }}" id="end_date" data-unavailable-dates="{{ $encUnavailableDates }}" required
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        onchange="updateTotalPrice()"
+                         required
                     />
                     </div>
                 </div>
@@ -139,8 +143,15 @@
               @if(request()->input('start_date') && request()->input('end_date'))
                 <div class="mt-4"  x-show="startDate && endDate">
                     <p class="flex justify-between">
-                    <span class="font-semibold underline">${{$offer->price}} x {{ $numberOfNights }} @if($numberOfNights == 1) night: @else nights: @endif </span> 
-                    <span>${{ $totalPrice }}</span>
+                    {{-- <span class="font-semibold underline" id="number_of_nights">${{$offer->price}} x {{ $numberOfNights }} @if($numberOfNights == 1) night: @else nights: @endif </span> 
+                    <span id="total_price">${{ $totalPrice }}</span> --}}
+                        
+                        {{-- <span class="font-semibold underline" >${{$offer->price}} x <span id="number_of_nights">{{ $numberOfNights }}  @if($numberOfNights == 1) night: @else nights: @endif </span> </span>
+                        <span id="total_price" data-price-per-night="{{$offer->price}}">${{ $totalPrice }}</span> --}}
+
+                        <span class="font-semibold underline">${{$offer->price}} x <span id="number_of_nights"></span> <span id="nights_text"></span>:</span>
+                        <span id="total_price" data-price-per-night="{{$offer->price}}"></span>
+                    
                     </p>
                 </div> 
              <p class="text-sm text-gray-400 mt-4">You will receive an invitation to pay once the host accepts your request.</p>                        

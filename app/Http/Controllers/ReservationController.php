@@ -15,34 +15,33 @@ use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
-        public function create($offerId, Reservation $reservation)
-    {
-        if (Auth::check() && Auth::user()->host) {
-            $hostId = Auth::user()->host->id;
-            $offer = Offer::whereNotIn('host_id', [$hostId])->findOrFail($offerId);
-        } else {
-            $offer = Offer::findOrFail($offerId);
-        }
+    public function create($offerId)
+{
+    // Retrieve the offer
+    $offer = Offer::findOrFail($offerId);
 
-        // Unavailable Dates for reservation:
-        $unavailableDates = Reservation::getUnavailableDates($offer->id);
-        $encUnavailableDates = json_encode($unavailableDates);
+    // Calculate the initial values
+    $startDate = request()->input('start_date') ?? now()->toDateString();
+    $endDate = request()->input('end_date') ?? now()->addDay()->toDateString();
+    // $pricePerNight = $offer->price;
+    // $numberOfNights = Carbon::parse($startDate)->diffInDays($endDate);
+    // $totalPrice = $pricePerNight * $numberOfNights;
 
-        // Total price and number of nights depending on the dates inputs:
-        $startDate = Carbon::parse(request()->input('start_date'));
-        $endDate = Carbon::parse(request()->input('end_date'));
-        $pricePerNight = $offer->price;
-        $numberOfNights = $startDate->diffInDays($endDate); 
-        $totalPrice = $pricePerNight * $numberOfNights;
+    // Other necessary data for the view
+    $unavailableDates = Reservation::getUnavailableDates($offer->id);
+    $encUnavailableDates = json_encode($unavailableDates);
 
-        return view('reservations.create', [
-            'offer' => $offer,
-            'reservations' => json_encode($offer->reservations),
-            'encUnavailableDates' => $encUnavailableDates,
-            'numberOfNights' => $numberOfNights,
-            'totalPrice' => $totalPrice,
-        ]);
-    }
+    return view('reservations.create', [
+        'offer' => $offer,
+        'startDate' => $startDate,
+        'endDate' => $endDate,
+        // 'pricePerNight' => $pricePerNight,
+        // 'numberOfNights' => $numberOfNights,
+        // 'totalPrice' => $totalPrice,
+        'encUnavailableDates' => $encUnavailableDates,
+    ]);
+}
+
 
 
         public function store(Request $request, Reservation $reservation)
