@@ -174,9 +174,13 @@ document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('nights_text').textContent = nightsText;
   }
 
+  // Initialize the values on page load
+  calculateTotalPrice();
+
   startDateInput.addEventListener('input', calculateTotalPrice);
   endDateInput.addEventListener('input', calculateTotalPrice);
 });
+
 
 
 
